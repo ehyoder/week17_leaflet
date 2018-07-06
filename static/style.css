@@ -4,7 +4,7 @@ body {
   margin: 0;
 }
 
-/* set map size to */
+/* set map size to 500px*/
 #mapid {
   height: 500px;
 }
