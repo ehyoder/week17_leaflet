@@ -34,14 +34,14 @@ function createMap(earthquakes) {
     "access_token=pk.eyJ1IjoiZWh5b2RlciIsImEiOiJjamo0eDQ2OGoxbjI1M3ZwZ2UxN3h3cjYwIn0." +
     "KwFUMXyIa1CKzHH5sUAEqQ");
 
-  var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?" +
+  var satmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}?" +
     "access_token=pk.pk.eyJ1IjoiZWh5b2RlciIsImEiOiJjamo0eDQ2OGoxbjI1M3ZwZ2UxN3h3cjYwIn0." +
     "KwFUMXyIa1CKzHH5sUAEqQ");
 
   // Define a baseMaps object to hold our base layers
   var baseMaps = {
     "Street Map": streetmap,
-    "Dark Map": darkmap
+    "Satellite Map": satmap
   };
 
   // Create overlay object to hold our overlay layer
