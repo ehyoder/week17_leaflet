@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Earthquake Heatmap</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="static/leaflet-heat.js"></script>
+
+  </head>
+<body>
+
+<div id="map"></div>
+
+<style>
+
+  body {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #map,
+  body,
+  html {
+    height: 100%;
+  }
+
+</style>
+
+<script type="text/javascript">
+
+var mapbox = "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
+    "access_token=pk.eyJ1IjoiZWh5b2RlciIsImEiOiJjamo0eDQ2OGoxbjI1M3ZwZ2UxN3h3cjYwIn0." +
+    "KwFUMXyIa1CKzHH5sUAEqQ"
+
+// Coordinates for El Salvador (where there will be data)
+var myMap = L.map('map', {
+  center: [13.7942, -88.8965],
+  zoom: 5
+});
+
+L.tileLayer(mapbox).addTo(myMap);
+
+var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
+
+d3.json(url, function(response){
+
+  console.log(response);
+
+  var heatArray = [];
+
+  for (var i = 0; i < response.length; i++) {
+    var location = response[i].features;
+
+    if (features) {
+      heatArray.push([features.geometry.coordinates[0], features.geometry.coordinates[1]])
+    }
+  }
+
+  var heat = L.heatLayer(heatArray, {
+    radius: 20,
+    blur: 35
+  }).addTo(myMap)
+
+});
+
+</script>
+
+</body>
+</html>
+
+
