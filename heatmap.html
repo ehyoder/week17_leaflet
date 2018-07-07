@@ -48,16 +48,20 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.g
 
 d3.json(url, function(response){
 
-  console.log(response);
+  //console.log(response);
 
+// Create empty array for storing coordinates
   var heatArray = [];
 
+
+// Loop through the response to get coordinates
   for (var i = 0; i < response.length; i++) {
     var location = response[i].features;
+  console.log(location);
 
-    if (features) {
-      heatArray.push([features.geometry.coordinates[0], features.geometry.coordinates[1]])
-    }
+    // if (location) {
+    //   heatArray.push([geometry.coordinates[0], geometry.coordinates[1]])
+    // }
   }
 
   var heat = L.heatLayer(heatArray, {
